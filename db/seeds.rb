@@ -31,4 +31,6 @@ genres = %w{
   War
   Western
 }
-genres.each { |g| Genre.create(name: g)}
+genres.each do |g| 
+  Genre.create(name: g)
+end
