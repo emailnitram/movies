@@ -1,0 +1,23 @@
+<div class="page-header">
+  <h1><%= @genre.name %></h1>
+</div>
+<% if @genre.movies.exists? %>
+<h3>Movies:</h3>
+<div class="well">
+  <% @genre.movies.each do |g|%>
+    <div>
+	  <%= link_to g.title, g %>	
+    </div>
+  <% end %>
+</div>
+<% else %>
+<div class="well">
+No Movies
+</div>
+<% end %>
+
+
+<div>
+  <%= link_to "Genres", genres_path, class: "btn btn-warning" %>
+  <%= link_to "Back to Movies", movies_path, class: "btn btn-warning" %>
+</div>

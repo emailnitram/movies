@@ -1,0 +1,7 @@
+<% @parsed_json.each do |m| %>
+  <%= m["title"] %><br>
+  <%= m["year"] %><br>
+  <% m["genres"].each do |g| %>
+  <%= g %><br>
+  <% end %>
+<% end %>
