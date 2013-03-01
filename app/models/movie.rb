@@ -1,7 +1,7 @@
 class Movie < ActiveRecord::Base
-  attr_accessible :description, :genre_id, :title, :year
+  attr_accessible :description, :title, :year, :genre_ids
   
-  validates :title, :year, :description, :genre_id, presence: true
+  validates :title, :year, :description, presence: true
   
-  belongs_to :genre
+  has_and_belongs_to_many :genres
 end

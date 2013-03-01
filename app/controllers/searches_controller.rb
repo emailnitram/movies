@@ -1,6 +1,6 @@
 class SearchesController < ApplicationController
   def index
-    raw_result = params[:search] || "man on fire"
+    raw_result = params[:search] ||= "man on fire"
     result = raw_result.gsub(/\s+/, "+")
     movie_details = HTTParty.get("http://imdbapi.org/?title="+result+"&type=json")
     @searches = ActiveSupport::JSON.decode(movie_details)

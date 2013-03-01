@@ -15,6 +15,6 @@
     <%= f.input :title %>
     <%= f.input :year %>
     <%= f.input :description %>
-	<%= f.association :genre, include_blank: false %>
+	<%= f.association :genres, include_blank: false %>
     <%= f.button :submit, class: "btn btn-primary" %>
 <% end %>

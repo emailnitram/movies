@@ -34,3 +34,5 @@ genres = %w{
 genres.each do |g| 
   Genre.create(name: g)
 end
+
+#Movie.create(title: "The Godfather", year: "1972", description: "The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant son.")
