@@ -18,7 +18,7 @@
 <p>
   <b>Genre:</b>
   <% @movie.genres.each do |g| %>
-  <%= g.name %>
+  <%= link_to g.name, g %>
   <% end %>
 </p>
 

@@ -9,9 +9,7 @@
   </p>
 <% end %>
 
-<% if @searches.empty? %>
-none
-<% else %>
+
 <% @searches.each do |r| %>
 	<%= r["title"] %><br>
 	<%= r["year"] %><br>
@@ -22,8 +20,6 @@ none
 	<% end %><br>
 	
 	<%= image_tag r["poster"] %><br>
-
-<% end %>
 <% end %>
 
 <% @searches %>

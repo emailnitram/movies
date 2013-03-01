@@ -18,7 +18,7 @@
     <td><%= movie.description %></td>
     <td>
 	    <% movie.genres.each do |g| %>
-	    <%= g.name %>
+	    <%= link_to g.name, g %>
 	    <% end %>
     </td>
     <td><%= link_to 'Show', movie %></td>
