@@ -1,9 +1,11 @@
 class Search < ActiveRecord::Base
   attr_accessible :search
   
-  def search
-    
-    movie_details = HTTParty.get("http://imdbapi.org/?title=iron+man&type=json")
-    @searches = ActiveSupport::JSON.decode(movie_details)
+  def self.search(search)
+    raw_result = search ||= "man on fire"
+    result = raw_result.gsub(/\s+/, "+")
+    movie_details = HTTParty.get("http://imdbapi.org/?title="+result+"&type=json")
+
+    ActiveSupport::JSON.decode(movie_details)
   end
 end
