@@ -1,6 +1,6 @@
 class SearchesController < ApplicationController
   def index
-     @searches = Search.search(params[:search]) 
+    @searches = Search.search(params[:search])    
   end
 
   # GET /searches/1
