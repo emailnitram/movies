@@ -14,10 +14,7 @@
 	<%= r["title"] %><br>
 	<%= r["year"] %><br>
 	<%= r["plot_simple"]%><br>
-	
-	<% r["genres"].each do |g| %>
-	  <%= g %>
-	<% end %><br>
+	<%= r["genres"].to_sentence %><br>
 	
 	<%= image_tag r["poster"] %><br>
 <% end %>
@@ -27,8 +24,14 @@
 <div class="span2">
 
 <%= link_to 'Add Movie to library', '#', class: "btn btn-warning" %>	
-	 
 
+<%= simple_form_for(@movie, :url => { :action => "create" }) do |f| %>
+    <%= f.input :title, :as => :hidden, :input_html => { :value => "Skyfall" } %>
+    <%= f.input :year, :as => :hidden, :input_html => { :value => "2012" } %>
+    <%= f.input :description, :as => :hidden, :input_html => { :value => "James Bond" } %>
+	<%= f.association :genres, include_blank: false, :as => :hidden, :input_html => { :value => "some value" } %>
+    <%= f.button :submit, class: "btn btn-warning" %>
+<% end %> 
 	
 </div>
 </div>

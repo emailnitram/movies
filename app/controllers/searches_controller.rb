@@ -1,6 +1,7 @@
 class SearchesController < ApplicationController
   def index
-    @searches = Search.search(params[:search])    
+    @searches = Search.search(params[:search])
+    @movie = Movie.new   
   end
 
   # GET /searches/1
@@ -18,6 +19,7 @@ class SearchesController < ApplicationController
   # GET /searches/new.json
   def new
     @search = Search.new
+    @movie = Movie.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -34,6 +36,7 @@ class SearchesController < ApplicationController
   # POST /searches.json
   def create
     @search = Search.new(params[:search])
+    @movie = Movie.new(params[:movie])
 
     respond_to do |format|
       if @search.save
