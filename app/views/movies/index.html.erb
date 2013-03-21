@@ -7,8 +7,6 @@
     <th>Description</th>
     <th>Genre</th>
     <th></th>
-    <th></th>
-    <th></th>
   </tr>
 
 <% @movies.each do |movie| %>
@@ -21,9 +19,7 @@
 	    <%= link_to g.name, g %>
 	    <% end %>
     </td>
-    <td><%= link_to 'Show', movie %></td>
-    <td><%= link_to 'Edit', edit_movie_path(movie) %></td>
-    <td><%= link_to 'Destroy', movie, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><% link_to 'Destroy', movie, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>

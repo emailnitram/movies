@@ -15,3 +15,7 @@
  body {
 	 padding-top: 20px;
  }
+ 
+ td {
+	 padding: 0 10px;
+ }

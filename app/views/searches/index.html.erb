@@ -9,31 +9,50 @@
   </p>
 <% end %>
 
+<% if @searches.class == Array  %>
 
-<% @searches.each do |r| %>
-	<%= r["title"] %><br>
-	<%= r["year"] %><br>
-	<%= r["plot_simple"]%><br>
-	<%= r["genres"].to_sentence %><br>
+	<% @searches.each do |r| %>
 	
-	<%= image_tag r["poster"] %><br>
+	<% @title = r["title"] %>
+	<% @year = r["year"] %>
+	<% @description = r["plot_simple"] %>
+	<% @genres = r["genres"] %>
+	
+	
+			
+			<% @all_genres.each do |g| %>
+			<%= g.id if g.name.include?((@genres.each {|g| g}).to_s) %>
+			<% end %>
+	
+		<% end %>
+	
+	
+		<%= @title %><br>
+		<%= @year %><br>
+		<%= @description %><br>
+		<%= @genres.to_sentence %><br>
+	
+
+	</div>
+	<div class="span2">
+
+	<%= simple_form_for @movie, url: movies_path, method: 'post' do |f| %>
+	    <%= f.input :title, :as => :hidden, :input_html => { :value => @title } %>
+	    <%= f.input :year, :as => :hidden, :input_html => { :value => @year } %>
+	    <%= f.input :description, :as => :hidden, :input_html => { :value => @description } %>
+		<%= f.association :genres, include_blank: false, :as => :hidden, :input_html => { :value => @genre_ids } %>
+	    <%= f.button :submit, 'Add Movie to library', class: "btn btn-warning" %>
+	<% end %> 
+
+<% else %>
+Sorry Search function currently unavailable.<br />
+Please check back soon
+
 <% end %>
-
-<% @searches %>
-</div>
-<div class="span2">
-
-<%= link_to 'Add Movie to library', '#', class: "btn btn-warning" %>	
-
-<%= simple_form_for(@movie, :url => { :action => "create" }) do |f| %>
-    <%= f.input :title, :as => :hidden, :input_html => { :value => "Skyfall" } %>
-    <%= f.input :year, :as => :hidden, :input_html => { :value => "2012" } %>
-    <%= f.input :description, :as => :hidden, :input_html => { :value => "James Bond" } %>
-	<%= f.association :genres, include_blank: false, :as => :hidden, :input_html => { :value => "some value" } %>
-    <%= f.button :submit, class: "btn btn-warning" %>
-<% end %> 
 	
+  </div>
 </div>
-</div>
-
+<div class="row">
+	<br />
 <%= link_to 'Back to Movies', root_path, class: "btn btn-warning" %>
+</div>

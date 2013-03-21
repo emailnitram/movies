@@ -1,7 +1,8 @@
 class SearchesController < ApplicationController
   def index
     @searches = Search.search(params[:search])
-    @movie = Movie.new   
+    @movie = Movie.new
+    @all_genres = Genre.all   
   end
 
   # GET /searches/1
